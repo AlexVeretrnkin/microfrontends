@@ -1,0 +1,42 @@
+@import "functions";
+@import "variables";
+
+:host {
+  &::ng-deep {
+    app-modal-input {
+      label {
+        margin-right: 0 !important;
+      }
+    }
+  }
+}
+
+.container {
+  width: rem-calc(340px);
+}
+
+.scrollable-container {
+  height: rem-calc(344px);
+}
+
+.add-icon {
+  background: $primary-normal;
+}
+
+.info-icon {
+  background: $info-lightest;
+}
+
+.remove-icon {
+  background: $error-lightest;
+}
+
+.dropdown-menu {
+  filter: drop-shadow(0px rem-calc(4px) rem-calc(8px) rgba(0, 0, 0, 0.16));
+}
+
+.item {
+  &:hover {
+    background: $primary-lightest;
+  }
+}

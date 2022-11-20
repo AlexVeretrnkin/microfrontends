@@ -1,0 +1,14 @@
+@import "functions";
+@import "variables";
+
+:host::ng-deep {
+  .table-item:nth-of-type(2)  {
+    min-width: rem-calc(512px);
+  }
+
+  .table-item:nth-of-type(4)  {
+    order: 0 !important;
+
+    width: rem-calc(96px);
+  }
+}

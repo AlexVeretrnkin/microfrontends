@@ -1,0 +1,16 @@
+<app-basic-table
+  [data]="(tableData$ | async)!"
+  [tableOptions]="tableOptions"
+  (tableAction)="onTableAction($event)"
+  (controlAction)="onControlAction($event)"
+>
+</app-basic-table>
+
+<ng-template #contactInfo>
+  <app-contact-info
+    class="mt-24 d-block"
+    [formData]="contactInfoFormGroup"
+    (contactInfoChanges)="onContactInfoChange($event)"
+  >
+  </app-contact-info>
+</ng-template>

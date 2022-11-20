@@ -1,0 +1,20 @@
+@import "functions";
+@import "variables";
+@import "modals";
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  @extend .base-modal;
+
+  padding: 0;
+
+  min-width: 50%;
+
+  &::ng-deep {
+    .map-container {
+      border-radius: rem-calc(8px);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<app-basic-table
+  [data]="(tableData$ | async)!"
+  [tableOptions]="tableOptions"
+  [paginationQuery]="startQuery"
+  (pagination)="onPagination($event)"
+  (tableAction)="onTableAction($event)"
+  (controlAction)="onControlAction($event)"
+>
+</app-basic-table>

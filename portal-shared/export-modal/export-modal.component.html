@@ -1,0 +1,70 @@
+<section class="modal__header pb-19 pt-32 pl-32 pr-44">
+  <h4 class="mb-0">{{inputData.heading}}</h4>
+  <p class="text-regular text_grayscale-neutral mb-0 mt-8"
+     *ngIf="inputData.subheading"
+  >
+    {{inputData.subheading}}
+  </p>
+</section>
+
+
+<section class="pt-24 pb-32 pl-32">
+  <div class="field-container">
+    <app-modal-input
+      [control]="selectControl"
+      [inputData]="fieldOptions"
+    >
+    </app-modal-input>
+
+    <div class="mt-16 w-100">
+      <h5 class="text_grayscale-dark mb-16">Експортовані поля</h5>
+
+      <div class="border-radius_8 border w-100">
+        <bs-sortable
+          [(ngModel)]="fields"
+          itemClass="sortable-item"
+          itemActiveClass="sortable-item-active"
+          placeholderItem="Drag here"
+          placeholderClass="placeholderStyle"
+          wrapperClass="sortable-wrapper"
+          [itemTemplate]="itemTemplate"
+        ></bs-sortable>
+
+        <ng-template #itemTemplate let-item="item" let-i=index>
+          <div class="divider-border cursor-grab d-flex align-items-center p-12 h-48 w-100"
+               [class.divider-border_with-last]="i !== fields.length - 1"
+          >
+            <app-animated-checkbox class="mr-8"
+                                   [checkBoxId]="item.value"
+            >
+            </app-animated-checkbox>
+
+            {{item.value}}
+
+            <svg-icon-sprite
+              class="ml-auto"
+              [src]="('assets/sprites/sprite.svg#strips-icon')"
+              [classes]="'icon icon_16 icon_grayscale-dark'"
+            >
+            </svg-icon-sprite>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modal__footer pt-19 pb-16 pr-16 pl-16 d-flex justify-content-end align-content-center">
+
+  <button class="button button-interaction_outlined button_transparent h-48 pt-12 pb-12 pl-16 pr-16"
+          (click)="close()"
+  >
+    Скасувати
+  </button>
+
+  <button class="button button-interaction border-radius_8 h-48 pt-12 pb-12 pl-16 pr-16 ml-10"
+          (click)="action()"
+  >
+    Експортувати
+  </button>
+</section>

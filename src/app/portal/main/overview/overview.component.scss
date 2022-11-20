@@ -1,0 +1,26 @@
+@import "functions";
+@import "variables";
+
+.notification {
+  max-width: rem-calc(376px);
+
+  &_warning {
+    background: $warning-secondary;
+
+    color: $warning-primary !important;
+
+    p {
+      color: $warning-primary !important;
+    }
+  }
+
+  &_error {
+    background: $error-secondary;
+
+    color: $error-primary !important;
+
+    p {
+      color: $error-primary !important;
+    }
+  }
+}

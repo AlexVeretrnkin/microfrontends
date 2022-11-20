@@ -1,0 +1,10 @@
+<app-main-navigation
+  [photoUrl]="(userPhotoUrl$ | async)!"
+  (logOut)="onLogOut()">
+</app-main-navigation>
+
+<app-sub-navigation></app-sub-navigation>
+
+<div class="content w-100 h-100 d-flex flex-column scrollable-container">
+  <router-outlet></router-outlet>
+</div>

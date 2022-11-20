@@ -1,0 +1,40 @@
+<section class="modal__header pb-19 pt-32 pl-32 pr-44">
+  <h4 class="mb-8">Редагування прав доступу </h4>
+  <p class="text-regular text_grayscale-neutral m-0">Уведіть/змініть дані</p>
+</section>
+
+<form class="pt-8 pb-16 pr-32 pl-32"
+      [formGroup]="modalFormGroup"
+>
+
+  <div class="p-5 d-flex align-items-center justify-content-between w-50"
+       *ngFor="let item of parentPermissions; let i = index"
+  >
+    <span class="label-medium">
+      {{item}}
+    </span>
+
+    <app-animated-checkbox
+      [checkBoxFormControl]="getFormControlFromArray(i)"
+      [checkBoxId]="'perm' + i.toString()"
+    >
+    </app-animated-checkbox>
+  </div>
+
+</form>
+
+
+<section class="modal__footer pt-19 pb-16 pr-16 pl-16 d-flex justify-content-end align-content-center">
+  <button class="button button-interaction_outlined button_transparent h-48 pt-12 pb-12 pl-16 pr-16"
+          (click)="close()"
+  >
+    Скасувати
+  </button>
+
+  <button class="button button-interaction border-radius_8 h-48 pt-12 pb-12 pl-16 pr-16 ml-10"
+          [disabled]="modalFormGroup.invalid"
+          (click)="action()"
+  >
+    Зберегти
+  </button>
+</section>

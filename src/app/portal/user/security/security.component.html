@@ -1,0 +1,77 @@
+<section>
+  <h4 class="heading mb-24">Методи авторизації</h4>
+
+  <div class="d-flex">
+    <div class="method-card p-16 d-flex flex-column align-items-center justify-content-between mr-16">
+      <div class="d-flex align-items-center">
+        <svg-icon-sprite
+          class="mr-10"
+          [src]="'assets/sprites/sprite.svg#password-icon'"
+          [classes]="'icon icon_24 icon_grayscale-dark'"
+        >
+        </svg-icon-sprite>
+
+        <h5 class="m-0">Пароль</h5>
+      </div>
+
+
+      <button class="method-card__button button button_transparent button-text cursor-pointer mt-16"
+              (click)="changePassword()"
+      >
+        Змінити
+      </button>
+    </div>
+
+<!--    <div class="method-card p-16 d-flex flex-column align-items-center justify-content-between mr-16">
+      <div class="d-flex align-items-center">
+        <svg-icon-sprite
+          class="mr-10"
+          [src]="'assets/sprites/sprite.svg#key-icon'"
+          [classes]="'icon icon_24 icon_grayscale-dark'"
+        >
+        </svg-icon-sprite>
+
+        <h5 class="m-0">Фізичний ключ “ОТК-3”</h5>
+
+        <div class="method-card__action icon_24 ml-10 cursor-pointer d-flex align-items-center justify-content-center">
+          <svg-icon-sprite
+            [src]="'assets/sprites/sprite.svg#cross-icon'"
+            [classes]="'icon icon_12 icon_error-neutral'"
+          >
+          </svg-icon-sprite>
+        </div>
+      </div>
+
+
+      <button class="method-card__button button button_transparent button-text cursor-pointer mt-16">
+        Змінити
+      </button>
+    </div>-->
+  </div>
+</section>
+
+<!--<section class="mt-32">
+  <h4 class="heading mb-24">Авторизовані сесії</h4>
+
+  <div class="divider-border divider-border_with-last color-black pb-8 d-flex">
+    <div class="pl-0 col-3 d-flex align-items-center">
+      <div class="method-card__action bg-lightest icon_24 d-flex align-items-center justify-content-center">
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#dots-triangle-icon'"
+          [classes]="'icon icon_12 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+
+      <span class="text-regular ml-7">Авторизовано через</span>
+    </div>
+    <div class="col-2">Розпочата</div>
+    <div class="col-3">Остання активність</div>
+    <div class="pr-0 col-4 text-right">Дії</div>
+  </div>
+
+  <app-session-item
+    *ngFor="let session of sessions"
+    [session]="session"
+  ></app-session-item>
+</section>-->

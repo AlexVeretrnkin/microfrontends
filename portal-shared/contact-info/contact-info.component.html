@@ -1,0 +1,119 @@
+<div class="mb-8 d-flex align-items-center" xmlns="http://www.w3.org/1999/html">
+  <h5 class="text_grayscale-dark mb-0">
+    Контактна інформація
+  </h5>
+
+  <div class="add-icon h-24 w-24 ml-16 border-radius_8 d-flex align-items-center justify-content-center"
+       (click)="changeContactInfo(contactInfoChangesEnum.add)"
+  >
+    <svg-icon-sprite
+      class="cursor-pointer"
+      [src]="'assets/sprites/sprite.svg#plus-icon'"
+      [classes]="'icon icon_12 icon_grayscale-white'"
+    >
+    </svg-icon-sprite>
+  </div>
+</div>
+
+<div class="scrollable-container mb-16 w-100 d-flex flex-column flex-wrap flex-1">
+  <div class="container m-0 d-flex"
+       *ngFor="let formGroup of formData.controls; let i = index">
+    <div class="border border-radius_16 p-16 w-100">
+      <app-modal-input
+        class="d-block mb-8"
+        [inputData]="getInputData('name')"
+        [control]="getFormControl(formGroup, 'name')"
+      >
+      </app-modal-input>
+
+      <div>
+        <p class="pt-4 pb-4 mb-0">
+          <span class="label-medium">Тип</span>
+        </p>
+
+        <div class="btn-group w-100" dropdown #dropdown="bs-dropdown">
+          <button id="button-basic"
+                  class="base-input base-input_grayscale-light text_grayscale-dark text-left bg-transparent h-40 w-100
+                     d-flex align-items-center cursor-pointer"
+                  dropdownToggle
+                  aria-controls="dropdown-basic"
+          >
+            <span>{{formGroup.get('type')?.value ? formGroup.get('type')?.value : 'Оберіть тип'}}</span>
+
+            <svg-icon-sprite
+              class="ml-auto"
+              [class.rotate-90deg-reverse]="!dropdown.isOpen"
+              [src]="'assets/sprites/sprite.svg#arrow-icon'"
+              [classes]="'icon icon_16 icon_grayscale-neutral'"
+            >
+            </svg-icon-sprite>
+          </button>
+
+          <ul id="dropdown-basic"
+              class="dropdown-menu border-radius_8 border-0 p-0 w-100"
+              role="menu"
+              aria-labelledby="button-basic"
+              *dropdownMenu
+          >
+            <li class="item h-48 p-16 cursor-pointer d-flex align-items-center"
+                *ngFor="let type of contactTypes"
+                (click)="choseContactType(type, formGroup)"
+                role="menuitem"
+            >
+              <svg-icon-sprite
+                class="mr-8"
+                [src]="('assets/sprites/sprite.svg#' + type + '-icon')"
+                [classes]="'icon icon_16 icon_grayscale-darkest'"
+              >
+              </svg-icon-sprite>
+
+              <span class="text-regular">{{type}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <app-modal-input
+        class="d-block mb-8"
+        [inputData]="getInputData('value')"
+        [control]="getFormControl(formGroup, 'value')"
+      >
+      </app-modal-input>
+
+      <div>
+        <p class="pt-4 pb-4 mb-0">
+          <span class="label-medium">Примітки</span>
+
+          <span class="label-regular text_grayscale-neutral ml-4">(Не обов’язкове)</span>
+        </p>
+
+        <textarea class="base-input base-input_grayscale-light h-45 w-100"
+                  [formControl]="getFormControl(formGroup, 'notes')"
+
+        ></textarea>
+      </div>
+    </div>
+
+    <div>
+      <div class="info-icon h-24 w-24 ml-8 mb-8 border-radius_8 d-flex align-items-center justify-content-center">
+        <svg-icon-sprite
+          class="cursor-pointer"
+          [src]="'assets/sprites/sprite.svg#strips-icon'"
+          [classes]="'icon icon_12 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+
+      <div class="remove-icon h-24 w-24 ml-8 border-radius_8 d-flex align-items-center justify-content-center"
+           (click)="changeContactInfo(contactInfoChangesEnum.remove, i)"
+      >
+        <svg-icon-sprite
+          class="cursor-pointer rotate-45deg"
+          [src]="'assets/sprites/sprite.svg#plus-icon'"
+          [classes]="'icon icon_12 icon_error-neutral'"
+        >
+        </svg-icon-sprite>
+      </div>
+    </div>
+  </div>
+</div>

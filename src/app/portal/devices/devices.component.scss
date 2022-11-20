@@ -1,0 +1,13 @@
+@import "functions";
+@import "variables";
+
+:host {
+  height: 100%;
+  width: 100%;
+
+  padding: rem-calc(24px);
+}
+
+.h-54 {
+  height: rem-calc(54px);
+}

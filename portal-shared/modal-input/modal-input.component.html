@@ -1,0 +1,122 @@
+<p class="pt-4 pb-4 mb-0">
+  <span class="label-medium">
+    {{(translation + getFieldName) | translate}}
+  </span>
+
+  <span class="label-regular color-error-primary" *ngIf="inputData.isObligatory">*</span>
+
+  <span class="label-regular text_grayscale-neutral ml-4"
+        *ngIf="!inputData.isObligatory"
+  >
+    (Не обов’язкове)
+  </span>
+</p>
+
+<div class="base-input base-input_grayscale-light input-interaction d-flex align-items-center"
+     [class.p-0]="inputData.type === inputType.File ||
+     inputData.type === inputType.Coordinates ||
+     inputData.type === inputType.TypeHead ||
+     inputData.type === inputType.Date ||
+     inputData.type === inputType.Select"
+>
+
+  <ng-container *ngIf="inputData.type !== inputType.TypeHead &&
+                       inputData.type !== inputType.Date &&
+                       inputData.type !== inputType.Select"
+  >
+      <span class="text-regular text_ellipsis text_grayscale-dark overflow-hidden pl-12 w-100"
+            *ngIf="inputData.type === inputType.File"
+      >
+        {{control.value || (translation + 'placeholders.' + getFieldName) | translate}}
+      </span>
+
+    <svg-icon-sprite
+      *ngIf="!inputData.isObligatory && control.value"
+      class="w-16 h-16 d-flex align-items-center justify-content-center cursor-pointer"
+      [src]="'assets/sprites/sprite.svg#cross-icon'"
+      [classes]="'icon icon_16 icon_grayscale-neutral'"
+      [class.file-cross]="inputData.type === inputType.File"
+      [class.order-2]="inputData.type !== inputType.File"
+      (click)="clearControl()"
+    >
+    </svg-icon-sprite>
+
+    <label
+      class="mb-0 h-100 cursor-pointer order-1 d-flex flex-shrink-0 align-items-center justify-content-center"
+      [for]="inputData.formControlName"
+      [class.base-input__file-icon]="inputData.type === inputType.File || inputData.type === inputType.Coordinates"
+      [class.w-40]="inputData.type === inputType.Coordinates"
+      [class.mr-0]="inputData.type === inputType.File || inputData.type === inputType.Coordinates"
+      [class.ml-0]="inputData.type === inputType.Coordinates"
+      [class.mr-8]="inputData.type !== inputType.File && inputData.type !== inputType.Coordinates && inputData.icon"
+      [class.ml-auto]="inputData.type === inputType.File"
+      [class.w-42]="inputData.type === inputType.File"
+      (click)="emitAction()"
+    >
+      <svg-icon-sprite
+        *ngIf="inputData.icon"
+        class="w-16 h-16"
+        [src]="('assets/sprites/sprite.svg#' + inputData.icon)"
+        [classes]="'icon icon_16 icon_grayscale-dark'"
+      >
+      </svg-icon-sprite>
+    </label>
+
+    <input
+      class="text-regular border-0 p-0 w-100 h-100"
+      autocomplete="off"
+      #input
+      *ngIf="inputData.type !== inputType.File"
+      [class.order-0]="inputData.type === inputType.Coordinates"
+      [class.order-1]="inputData.type !== inputType.Coordinates"
+      [class.pl-16]="inputData.type === inputType.Coordinates"
+      [id]="inputData.formControlName"
+      [type]="inputData.type"
+      [formControl]="control"
+      [placeholder]="(translation + 'placeholders.' + getFieldName) | translate"
+    >
+
+    <input
+      class="input-interaction text-regular border-0 p-0 w-100 h-100 d-none"
+      autocomplete="off"
+      *ngIf="inputData.type === inputType.File"
+      [id]="inputData.formControlName"
+      [type]="inputData.type"
+      [placeholder]="('placeholders.' + getFieldName) | translate"
+      (change)="emitFileChange($event)"
+    >
+  </ng-container>
+
+  <app-typehead *ngIf="inputData.type === inputType.TypeHead"
+                [control]="control"
+                [searchField]="getString(inputData.selectField)"
+                [selections$]="inputData.selectData!"
+                [nameOfControl]="getString(inputData.formControlName)"
+                [targetSelectionFieldName]="getString(inputData.targetSelectionFieldName)"
+                (selectItem)="onTypeheadSelection($event)"
+  >
+  </app-typehead>
+
+  <app-date-pick
+    *ngIf="inputData.type === inputType.Date"
+    [control]="control"
+  >
+  </app-date-pick>
+
+  <app-select-input
+    class="w-100"
+    *ngIf="inputData.type === inputType.Select"
+    [selectControl]="control"
+    [isIconShown]="false"
+    [selections]="(inputData.selectData | async)!"
+    [defaultText]="'Оберіть з варіантів'"
+  ></app-select-input>
+</div>
+
+<div class="input-hint d-flex w-100"
+     *ngIf="control?.touched && control?.errors as error"
+>
+          <span class="input-hint-text label-small">
+            {{error | formErrors:'login'}}
+          </span>
+</div>

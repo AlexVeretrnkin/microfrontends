@@ -1,0 +1,8 @@
+@import "functions";
+@import "variables";
+
+.delete-button {
+  background: $error-neutral;
+
+  color: $grayscale-white;
+}

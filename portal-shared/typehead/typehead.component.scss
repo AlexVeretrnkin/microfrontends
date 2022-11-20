@@ -1,0 +1,60 @@
+@import "functions";
+@import "variables";
+@import "classes";
+
+:host {
+  display: block;
+
+  position: relative;
+
+  width: 100%;
+}
+
+:host::ng-deep {
+  .dropdown {
+    padding: 0;
+
+    border: none;
+
+    @extend .dropdown-menu;
+
+    overflow: hidden;
+
+    width: 100%;
+
+    max-height: rem-calc(300px);
+
+    top: rem-calc(5px) !important;
+  }
+}
+
+.custom-list-group {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.test {
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-list-group-item {
+  position: relative;
+  display: block;
+  padding: rem-calc(16px);
+  background-color: $grayscale-white;
+
+  &:hover {
+    background-color: $primary-lightest;
+  }
+}
+
+.custom-list-group-item.active {
+  background-color: $primary-lightest;
+}

@@ -1,0 +1,46 @@
+<div class="position-relative w-100 h-100"
+     (appClickOutside)="close()"
+>
+  <div class="w-100 h-100 p-0 d-flex align-items-center"
+       (click)="toggleCalendar()"
+  >
+    <span class="border-0 pl-12 m-0 w-100"
+          [class.placeholder]="!control.value">
+      {{control.value ? (control.value | date: 'dd.MM.yyyy HH:mm:ss') : 'Дата'}}
+    </span>
+
+    <div class="border-left p-12 d-flex align-items-center justify-content-center cursor-pointer">
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#calendar-icon'"
+        [classes]="'icon icon_16 icon_grayscale-dark'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+
+  <div class="date-container pb-16 pl-16 pr-16 position-absolute d-flex flex-column align-items-center"
+       *ngIf="isOpen"
+  >
+    <bs-datepicker-inline
+      [bsValue]="bsInlineValue || control.value"
+      [bsConfig]="{showWeekNumbers:false}"
+      (bsValueChange)="setDate($event)"
+    >
+    </bs-datepicker-inline>
+
+    <div class="w-100 d-flex align-items-center justify-content-between">
+      <svg-icon-sprite
+        class="ml-10 mr-8"
+        [src]="'assets/sprites/sprite.svg#clock-icon'"
+        [classes]="'icon icon_16 icon_grayscale-dark'"
+      >
+      </svg-icon-sprite>
+
+      <timepicker [formControl]="control"
+                  [showMeridian]="false"
+                  [showSeconds]="true"
+      >
+      </timepicker>
+    </div>
+  </div>
+</div>

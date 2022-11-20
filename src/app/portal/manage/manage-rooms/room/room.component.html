@@ -1,0 +1,61 @@
+<section class="d-flex">
+  <a class="w-40 h-40 bg-info-lightest border-radius_8 cursor-pointer button-interaction_outlined
+              d-flex align-items-center justify-content-center"
+     [routerLink]="'../'"
+  >
+    <svg-icon-sprite
+      class="rotate-90deg"
+      [src]="'assets/sprites/sprite.svg#arrow-icon'"
+      [classes]="'icon icon_24 icon_primary-normal'"
+    >
+    </svg-icon-sprite>
+  </a>
+  <!--  {{(meter$ | async)?.serialNumber}}-->
+  <h3 class="ml-8 mb-0">Кімната / {{(building$ | async)?.name}} / {{(floor$ | async)?.index}} Поверх / {{(room$ | async)?.index}}</h3>
+</section>
+
+<section class="mt-48 w-100 h-100 d-flex flex-column flex-1">
+  <div class="full-content-border w-100 h-40 d-flex mb-32">
+    <a class="border-radius_top-edge-8 p-12 d-flex align-items-center cursor-pointer mr-8"
+       [routerLink]="routes.manageRoomGeneral"
+       [routerLinkActive]="'bg-info-lightest'"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="'assets/sprites/sprite.svg#chart-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+
+      <span class="color-primary">Загально</span>
+    </a>
+
+    <a class="border-radius_top-edge-8 p-12 d-flex align-items-center cursor-pointer mr-8"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="'assets/sprites/sprite.svg#equipment-icon'"
+        [classes]="'icon icon_16 icon_grayscale-neutral'"
+      >
+      </svg-icon-sprite>
+
+      <span class="text_grayscale-neutral">Обладнання</span>
+    </a>
+
+    <a class="border-radius_top-edge-8 p-12 d-flex align-items-center cursor-pointer"
+       [routerLink]="routes.manageRoomEnvironmentalReadings"
+       [routerLinkActive]="'bg-info-lightest'"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="'assets/sprites/sprite.svg#leaf-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+
+      <span class="color-primary">Показники середовища</span>
+    </a>
+  </div>
+
+  <router-outlet></router-outlet>
+</section>

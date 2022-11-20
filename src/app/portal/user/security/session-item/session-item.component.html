@@ -1,0 +1,80 @@
+<div class="session-item text-regular d-flex align-items-center w-100">
+  <div class="pl-0 col-3 d-flex align-items-center">
+    <svg-icon-sprite
+      *ngIf="session.authorizationType !== 'Пароль'"
+      [src]="'assets/sprites/sprite.svg#key-icon'"
+      [classes]="'icon icon_24 icon_grayscale-darkest'"
+    >
+    </svg-icon-sprite>
+
+    <svg-icon-sprite
+      *ngIf="session.authorizationType === 'Пароль'"
+      [src]="'assets/sprites/sprite.svg#password-icon'"
+      [classes]="'icon icon_24 icon_grayscale-darkest'"
+    >
+    </svg-icon-sprite>
+
+    <span class="text-regular ml-16">{{session.authorizationType}}</span>
+  </div>
+
+  <div class="col-2">{{session.startDate}}</div>
+  <div class="col-3">{{session.lastActivityDate}}</div>
+  <div class="col-4 pr-0 d-flex justify-content-end">
+    <div class="method-card__action action-item cursor-pointer mr-8 d-flex align-items-center justify-content-center"
+         (click)="open()"
+    >
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#circle-icon'"
+        [classes]="'icon icon_24 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+    </div>
+
+    <div
+      class="method-card__action action-item action-item_log-out cursor-pointer
+      d-flex align-items-center justify-content-center"
+    >
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#log-out-icon'"
+        [classes]="'icon icon_24 icon_error-neutral'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+</div>
+
+<div class="method-card p-16 mt-7 mb-8"
+     *ngIf="justTest"
+>
+  <div class="wrapper d-inline-flex flex-wrap">
+    <div class="info">
+      <p class="label-medium info__heading">Тип</p>
+      <p class="text-regular info__text">Фізичний ключ</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Назва</p>
+      <p class="text-regular info__text">ОТК-2</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Операційна система</p>
+      <p class="text-regular info__text">Windows 10 15.152</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Браузер</p>
+      <p class="text-regular info__text">Firefox 15.5</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">IP-Адреса</p>
+      <p class="text-regular info__text">88.252.1.255</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Приблизне розташування</p>
+      <p class="text-regular info__text">Місто Київ. Україна</p>
+    </div>
+  </div>
+</div>

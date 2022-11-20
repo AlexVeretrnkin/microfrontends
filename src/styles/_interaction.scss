@@ -1,0 +1,63 @@
+@import "functions";
+@import "variables";
+
+.button-interaction {
+  transition: .15s;
+
+  &:hover {
+    background: $primary-light;
+  }
+
+  &:focus {
+    background: $primary-normal;
+  }
+
+  &:active {
+    background: $primary-dark;
+
+    transform: scale(.95);
+  }
+
+  &:disabled {
+    background: $grayscale-light;
+    color: $grayscale-neutral;
+  }
+
+  &_outlined {
+    transition: .15s;
+
+    &:hover {
+      color: $primary-light;
+    }
+
+    &:focus {
+      color: $primary-normal;
+    }
+
+    &:active {
+      color: $primary-dark;
+
+      transform: scale(.95);
+    }
+
+    &:disabled {
+      color: $grayscale-neutral;
+    }
+  }
+}
+
+.input-interaction {
+  transition: .15s;
+
+  &:hover {
+    border: rem-calc(2px) solid $primary-light;
+  }
+
+  &:focus {
+    border: rem-calc(2px) solid $primary-normal;
+  }
+
+  &:focus-within {
+    border: rem-calc(2px) solid $primary-normal;
+  }
+}

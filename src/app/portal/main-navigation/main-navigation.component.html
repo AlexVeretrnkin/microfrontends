@@ -1,0 +1,92 @@
+<img class="navigation__image cursor-pointer ml-auto mr-auto" src="./img/kpi-logo.svg" alt="logo">
+
+<a class="navigation__item margin-top-32 d-flex align-items-center justify-content-center"
+   [href]="routesEnum.main"
+   [routerLink]="routesEnum.main"
+   [routerLinkActive]="'navigation__item_active'"
+>
+  <svg-icon-sprite
+    [src]="'assets/sprites/sprite.svg#chart-icon'"
+    [classes]="'icon icon_24 icon_grayscale-neutral'"
+  >
+  </svg-icon-sprite>
+</a>
+
+<a class="navigation__item d-flex align-items-center justify-content-center"
+   [href]="routesEnum.manage"
+   [routerLink]="routesEnum.manage"
+   [routerLinkActive]="'navigation__item_active'"
+>
+  <svg-icon-sprite
+    [src]="'assets/sprites/sprite.svg#manage-icon'"
+    [classes]="'icon icon_24 icon_grayscale-neutral'"
+  >
+  </svg-icon-sprite>
+</a>
+
+<a class="navigation__item mt-auto d-flex align-items-center justify-content-center"
+   [href]="'/settings'"
+   [routerLink]="'/settings'"
+   [routerLinkActive]="'navigation__item_active'"
+>
+  <svg-icon-sprite
+    [src]="'assets/sprites/sprite.svg#circle-icon'"
+    [classes]="'icon icon_24 icon_grayscale-neutral'"
+  >
+  </svg-icon-sprite>
+</a>
+
+<a class="navigation__item d-flex align-items-center justify-content-center"
+   [href]="routesEnum.user"
+   [routerLink]="routesEnum.user"
+   [routerLinkActive]="'navigation__item_active'"
+   (mouseleave)="pop.hide()"
+   (mouseenter)="pop.show()"
+>
+  <div
+    class="navigation__image navigation__image_notification navigation__image_default-avatar
+           d-flex align-items-center justify-content-center position-relative"
+    #pop="bs-popover"
+    [popover]="popoverContent"
+    [placement]="'right'"
+    [triggers]="null!"
+  >
+    <img class="navigation__image rounded-circle"
+         *ngIf="photoUrl"
+         [src]="photoUrl"
+         alt="logo"
+    >
+
+    <svg-icon-sprite
+      class="h-20 w-20"
+      *ngIf="!photoUrl"
+      [src]="'assets/sprites/sprite.svg#person-icon'"
+      [classes]="'icon icon_20 icon_grayscale-white'"
+    >
+    </svg-icon-sprite>
+  </div>
+</a>
+
+<ng-template #popoverContent>
+  <div class="popover-content position-relative d-flex align-items-center justify-content-center"
+       (mouseenter)="pop.show()"
+  >
+    <svg-icon-sprite
+      class="popover-content__arrow position-absolute d-flex align-items-center"
+      [src]="'assets/sprites/sprite.svg#popover-triangle'"
+      [classes]="'icon icon_h-20 icon_w-10 icon_grayscale-white'"
+    >
+    </svg-icon-sprite>
+
+    <div class="popover-content__action cursor-pointer d-flex align-items-center justify-content-center"
+         (click)="logOutAction($event)"
+    >
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#log-out-icon'"
+        [classes]="'icon icon_24 icon_error-neutral'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+</ng-template>
+

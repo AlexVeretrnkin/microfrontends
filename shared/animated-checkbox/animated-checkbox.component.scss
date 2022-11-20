@@ -1,0 +1,42 @@
+@import "src/styles/functions";
+@import "src/styles/variables";
+
+.checkbox-input-label {
+  transition: border-color .5s;
+
+  background: $grayscale-white;
+
+  &_primary {
+    border-color: $grayscale-neutral;
+  }
+}
+
+.checkbox-input {
+  &:checked + .checkbox-input-label {
+    border-color: $primary-normal;
+
+    background: $primary-normal;
+
+    .checkbox__checkmark_primary {
+      background: $primary-normal;
+    }
+
+    .checkbox__checkmark-rect {
+      transform: translateX(#{rem-calc(14px)});
+
+      &_primary {
+        fill: $primary-normal;
+      }
+    }
+  }
+}
+
+.checkbox__checkmark-rect {
+  &_primary {
+    fill: transparent;
+  }
+}
+
+.checkbox__checkmark {
+  pointer-events: none;
+}

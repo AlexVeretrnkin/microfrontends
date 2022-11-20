@@ -1,0 +1,56 @@
+<section class="modal__header pb-19 pt-32 pl-32 pr-44">
+  <h4 class="mb-8">{{inputData.heading}}</h4>
+  <p class="text-regular text_grayscale-neutral m-0">{{inputData.subheading}}</p>
+</section>
+
+<section class="modal__content pb-19 pt-19 pl-32">
+  <form
+    [formGroup]="modalFormGroup"
+  >
+    <app-field-group
+      *ngFor="let group of fieldGroups"
+      [fieldGroup]="group"
+      [modalFormGroup]="modalFormGroup"
+      (fileChange)="onFileChange($event)"
+      (typeheadSelection)="onTypeheadSelection($event)"
+    >
+    </app-field-group>
+  </form>
+</section>
+
+<section class="pl-32">
+  <ng-container
+    [ngTemplateOutlet]="inputData.additionalContent ? inputData.additionalContent : null"
+  >
+  </ng-container>
+</section>
+
+<section class="modal__footer pt-19 pb-16 pr-16 d-flex justify-content-end align-content-center">
+  <button class="button button_error-neutral border-radius_8 h-48 pt-12 pb-12 pl-16 pr-16 mr-auto ml-16
+                 d-flex align-items-center"
+          *ngIf="isDeleteButtonShown"
+          (click)="action(actionTypes.delete)"
+  >
+    <svg-icon-sprite
+      class="mr-8"
+      [src]="'assets/sprites/sprite.svg#bin-icon'"
+      [classes]="'icon icon_16 icon_grayscale-white'"
+    >
+    </svg-icon-sprite>
+
+    Видалити
+  </button>
+
+  <button class="button button_transparent h-48 pt-12 pb-12 pl-16 pr-16"
+          (click)="close()"
+  >
+    Скасувати
+  </button>
+
+  <button class="button button-interaction border-radius_8 h-48 pt-12 pb-12 pl-16 pr-16 ml-10"
+          [disabled]="modalFormGroup.invalid"
+          (click)="action()"
+  >
+    {{ isDeleteButtonShown ? 'Зберегти' : (inputData.actionButtonText || 'Створити')}}
+  </button>
+</section>

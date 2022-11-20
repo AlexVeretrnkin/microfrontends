@@ -1,0 +1,63 @@
+<section class="d-flex">
+  <a class="w-40 h-40 bg-info-lightest border-radius_8 cursor-pointer button-interaction_outlined
+              d-flex align-items-center justify-content-center"
+     [routerLink]="'../'"
+  >
+    <svg-icon-sprite
+      class="rotate-90deg"
+      [src]="'assets/sprites/sprite.svg#arrow-icon'"
+      [classes]="'icon icon_24 icon_primary-normal'"
+    >
+    </svg-icon-sprite>
+  </a>
+
+  <h3 class="ml-8 mb-0">Будівлі / {{(building$ | async)?.name}}</h3>
+</section>
+
+<section class="mt-48 w-100 h-100 d-flex flex-column flex-1">
+  <div class="full-content-border w-100 h-40 d-flex mb-32">
+    <a class="border-radius_top-edge-8 p-12 d-flex align-items-center cursor-pointer mr-8"
+       [routerLink]="routes.manageBuildingGeneral"
+       [routerLinkActive]="'bg-info-lightest'"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="'assets/sprites/sprite.svg#chart-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+
+      <span class="color-primary">Загально</span>
+    </a>
+
+    <a class="border-radius_top-edge-8 p-12 d-flex align-items-center cursor-pointer mr-8"
+       [routerLink]="routes.manageBuildingFloors"
+       [routerLinkActive]="'bg-info-lightest'"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="'assets/sprites/sprite.svg#plan-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+
+      <span class="color-primary">Поверхи</span>
+    </a>
+
+    <a class="border-radius_top-edge-8 p-12 d-flex align-items-center cursor-pointer"
+       [routerLink]="routes.manageBuildingRooms"
+       [routerLinkActive]="'bg-info-lightest'"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="'assets/sprites/sprite.svg#door-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+
+      <span class="color-primary">Кімнати</span>
+    </a>
+  </div>
+
+  <router-outlet></router-outlet>
+</section>

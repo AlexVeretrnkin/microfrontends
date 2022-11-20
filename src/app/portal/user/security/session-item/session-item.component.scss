@@ -1,0 +1,47 @@
+@import "functions";
+@import "variables";
+@import "classes";
+
+:host {
+  display: block;
+
+  width: 100%;
+
+  color: black;
+
+  @extend .divider-border;
+}
+
+.session-item {
+  height: rem-calc(56px);
+}
+
+.action-item {
+  background: $info-lightest;
+
+  &_log-out {
+    background: $error-lightest;
+  }
+}
+
+.wrapper {
+  width: calc(100% - #{rem-calc(82px)});
+
+  margin-right: rem-calc(-82px);
+  margin-top: rem-calc(-24px);
+}
+
+.info {
+  height: rem-calc(48px);
+
+  margin-right: rem-calc(82px);
+  margin-top: rem-calc(24px);
+
+  &__heading {
+    color: $grayscale-neutral;
+  }
+
+  &__text {
+    color: $grayscale-dark;
+  }
+}

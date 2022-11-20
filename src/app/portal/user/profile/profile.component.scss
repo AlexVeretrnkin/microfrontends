@@ -1,0 +1,102 @@
+@import "functions";
+@import "variables";
+
+.user-data {
+  width: rem-calc(224px);
+
+  padding: rem-calc(16px) rem-calc(16px) rem-calc(20px);
+
+  border-radius: rem-calc(16px);
+
+  background: $grayscale-lightest;
+
+  &__image {
+    width: rem-calc(192px);
+    height: rem-calc(192px);
+
+    border-radius: 50%;
+  }
+
+  &__contact-info-item {
+    width: rem-calc(256px);
+
+    &_type {
+      width: rem-calc(300px);
+    }
+  }
+
+  &__input-container {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+
+      bottom: 0;
+      left: 0;
+
+      background: $grayscale-neutral;
+
+      height: rem-calc(2px);
+
+      transition: transform .4s;
+    }
+
+    &_disabled {
+      &:before {
+        transform: translateX(-101%);
+      }
+    }
+  }
+
+  &__input {
+    &:disabled {
+      background: transparent;
+    }
+  }
+}
+
+.mr-82 {
+  margin-right: rem-calc(82px);
+}
+
+.textarea {
+  min-height: rem-calc(96px);
+  height: rem-calc(96px);
+
+  &:disabled {
+    resize: none;
+
+    background: transparent;
+  }
+}
+
+.textarea-wrapper {
+  ::-webkit-resizer {
+    background-image: url("/img/icon/dragger-icon.svg");
+
+    background-size: rem-calc(6px) rem-calc(6px);
+    background-repeat: no-repeat;
+
+    background-position: 95% 95%;
+  }
+}
+
+.textarea-drag {
+  width: rem-calc(9px);
+  height: rem-calc(9px);
+
+  font-size: rem-calc(5px);
+}
+
+.fix-container {
+  margin-top: rem-calc(-12px);
+}
+
+.save-button {
+  color: $primary-normal;
+
+  background: transparent;
+}

@@ -1,0 +1,73 @@
+<section class="login d-flex flex-column align-items-center justify-content-center">
+  <div class="d-flex login__heading-container">
+    <img class="login__heading-image" src="./img/kpi-logo.svg" alt="logo">
+
+    <div>
+      <h4 class="login__heading m-0">Департамент енергоменеджменту</h4>
+      <p class="login__sub-heading label-medium mb-0">Адміністративна панель</p>
+    </div>
+  </div>
+
+
+  <div class="login__form w-100 d-flex flex-column">
+    <h1 class="login__form-heading">Увійти</h1>
+
+    <form class="m-0 p-0"
+          [formGroup]="loginFormGroup"
+    >
+      <div>
+        <span class="label-medium">Ім’я користувача</span>
+
+        <input class="login__input input-interaction w-100"
+               type="text"
+               autocomplete="off"
+               autocapitalize="off"
+               [placeholder]="'Уведіть'"
+               [formControlName]="'email'"
+        >
+
+        <div class="login__input-hint d-flex w-100"
+             *ngIf="loginFormGroup!.get('email')!.touched && loginFormGroup!.get('email')!.errors as error"
+        >
+          <span class="login__input-hint-text label-small">
+            {{error | formErrors:'login'}}
+          </span>
+        </div>
+      </div>
+
+      <div class="margin-top-8">
+        <span class="label-medium">Password</span>
+
+        <input class="login__input input-interaction w-100"
+               type="password"
+               autocomplete="new-password"
+               autocapitalize="off"
+               [placeholder]="'Уведіть'"
+               [formControlName]="'password'"
+        >
+
+        <div class="login__input-hint d-flex w-100"
+             *ngIf="loginFormGroup!.get('password')!.dirty && loginFormGroup!.get('password')!.errors! as error"
+        >
+          <span class="login__input-hint-text label-small">
+            {{error | formErrors:'login'}}
+          </span>
+        </div>
+      </div>
+    </form>
+
+    <button class="login__button button button-interaction mt-24
+                   d-flex align-items-center justify-content-center cursor-pointer"
+            [disabled]="loginFormGroup.invalid"
+            (click)="signIn()"
+    >
+      Увійти
+    </button>
+
+    <button class="login__button login__button_transparent button-interaction_outlined margin-top-8
+                   d-flex align-items-center justify-content-center cursor-pointer"
+      (click)="recover()">
+      Відновити доступ
+    </button>
+  </div>
+</section>

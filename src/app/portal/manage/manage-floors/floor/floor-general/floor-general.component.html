@@ -1,0 +1,30 @@
+<section class="border border-radius_16 p-16 w-100"
+         *ngIf="floor$ | async as floor"
+>
+  <div class="d-flex justify-content-between align-items-center">
+    <h4 class="text_grayscale-dark mb-0">Загальні дані</h4>
+
+    <div class="bg-info-lightest border-radius_8 cursor-pointer button-interaction_outlined
+                w-32 h-32 d-flex align-items-center justify-content-center"
+         (click)="openInputModal(floor)"
+    >
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#edit-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+
+  <div class="general-info-wrapper mt-16 d-flex flex-wrap">
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Номер поверху</p>
+      <p class="text-regular text_grayscale-dark">{{floor.index}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Висота поверху</p>
+      <p class="text-regular text_grayscale-dark">{{floor.height}}</p>
+    </div>
+  </div>
+</section>

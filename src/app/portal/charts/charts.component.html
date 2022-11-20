@@ -1,0 +1,92 @@
+<header class="d-flex flex-column">
+  <div class="d-flex">
+    <h3 class="m-0">Status report</h3>
+
+    <div class="header__item cursor-pointer ml-16 d-flex align-items-center justify-content-center">
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#circle-icon'"
+        [classes]="'icon icon_24 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+    </div>
+    <div class="header__item cursor-pointer ml-16 d-flex align-items-center justify-content-center">
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#circle-icon'"
+        [classes]="'icon icon_24 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+  <p class="header__label label-regular m-0 p-0">Updated at 2020/03/01 12:00</p>
+</header>
+
+<div class="d-flex flex-wrap mt-16">
+  <div class="alert alert_success mr-16 mb-0">
+    <p class="text-medium m-0 p-0">Everything’s fine</p>
+    <p class="text-light m-0 p-0">No incidents or events happened in past 7 days</p>
+  </div>
+  <div class="alert alert_warning mb-0">
+    <p class="text-medium m-0 p-0">Security advice</p>
+    <p class="text-light m-0 p-0">
+      You havent changed your password in the past 87 days. It is advised to...
+    </p>
+  </div>
+</div>
+
+<h3 class="d-flex mt-8 mb-16">Charts</h3>
+
+<div class="d-flex flex-wrap">
+  <div class="chart-container mr-24 position-relative">
+    <div class="legend pt-24 pb-15 pl-24 pr-24 position-relative">
+      <div class="mb-24 d-flex align-items-center">
+        <h3 class="m-0">{{options.legend.data[0]}}</h3>
+
+        <input class="search-field ml-48" type="text" placeholder="Some text query field">
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="legend__item pl-32 pr-8 position-relative d-flex align-items-center">
+          <span class="legend__item-text">Charsdfsaft</span>
+        </div>
+
+        <div class="legend__item legend__item_not-toggleable pl-32 pr-8 position-relative d-flex align-items-center">
+          <span class="legend__item-text">Charsdfsaft</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart w-100 h-100"
+         echarts
+         [options]="options"
+         (chartInit)="initChart($event)"
+    >
+    </div>
+  </div>
+
+  <div class="chart-container mr-24">
+    <div class="legend pt-24 pb-15 pl-24 pr-24">
+      <div class="mb-24 d-flex align-items-center">
+        <h3 class="m-0">{{options.legend.data[0]}}</h3>
+
+        <input class="search-field ml-48" type="text" placeholder="Some text query field">
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="legend__item pl-32 pr-8 position-relative d-flex align-items-center">
+          <span class="legend__item-text">Charsdfsaft</span>
+        </div>
+
+        <div class="legend__item legend__item_not-toggleable pl-32 pr-8 position-relative d-flex align-items-center">
+          <span class="legend__item-text">Charsdfsaft</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart w-100"
+         echarts
+         [options]="options"
+         (chartInit)="initChart($event)"
+    >
+    </div>
+  </div>
+</div>

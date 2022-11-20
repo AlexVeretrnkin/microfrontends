@@ -1,0 +1,103 @@
+@import "variables";
+@import "functions";
+@import "interaction";
+
+:host {
+  height: 100%;
+  width: 100%;
+
+  background: $grayscale-white;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  height: 100%;
+  width: rem-calc(360px);
+
+  &__heading-container {
+    margin-bottom: rem-calc(40px);
+
+    height: rem-calc(72px);
+  }
+
+  &__heading-image {
+    margin-right: rem-calc(8px);
+  }
+
+  &__heading {
+    color: $grayscale-darkest;
+  }
+
+  &__sub-heading {
+    margin-top: rem-calc(8px);
+
+    color: $grayscale-neutral;
+  }
+
+  &__form {
+    padding: rem-calc(32px) rem-calc(32px) rem-calc(36px) rem-calc(32px);
+
+    background: $grayscale-lightest;
+
+    border-radius: rem-calc(16px);
+  }
+
+  &__form-heading {
+    color: black;
+
+    margin-bottom: rem-calc(32px);
+  }
+
+  &__input {
+    padding: rem-calc(8px) rem-calc(12px);
+    margin-bottom: rem-calc(4px);
+
+    border: rem-calc(2px) solid #E6E7FF;
+
+    border-radius: rem-calc(6px);
+
+    height: rem-calc(40px);
+
+    &::placeholder {
+      color: $grayscale-light;
+    }
+  }
+
+  &__input-hint {
+    height: rem-calc(16px);
+  }
+
+  &__input-hint-text {
+    color: $error-primary;
+  }
+
+  &__button {
+    height: rem-calc(48px);
+
+    border-radius: rem-calc(6px);
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &_transparent {
+      //height: rem-calc(24px);
+
+      margin-top: rem-calc(12px);
+
+      background: transparent;
+
+      color: $primary-normal;
+    }
+  }
+}
+
+.margin-top-8 {
+  margin-top: rem-calc(8px);
+}
+

@@ -1,0 +1,9 @@
+<ng-container *ngIf="currentUrl$ | async as url">
+  <h3 class="mb-48"
+      *ngIf="isHeaderHidden(url)"
+  >
+    {{('userPage.' + url) | translate}}
+  </h3>
+</ng-container>
+
+<router-outlet></router-outlet>

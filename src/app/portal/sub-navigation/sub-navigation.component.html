@@ -1,0 +1,64 @@
+<ng-container *ngIf="navigationBar$ | async as navigationBar">
+  <div class="d-flex flex-column">
+    <h3 class="m-0">{{navigationBar.mainRoute | translate | titlecase}}</h3>
+    <p class="label-medium m-0">{{date | date}}</p>
+  </div>
+
+  <div class="d-flex flex-column mt-32">
+    <accordion class="d-flex flex-column overflow-hidden">
+      <accordion-group *ngFor="let navigationItem of navigationBar.subRoutesMenu; let i = index;"
+                       [class.mt-16]="i > 0"
+                       [isOpen]="navigationItem.name === navigationBar.currentSubRouteName"
+                       #accordion
+      >
+
+        <button class="accordion__button button-interaction_outlined text-left p-0 w-100 d-flex align-items-center"
+                accordion-heading
+                type="button"
+                [@myInsertRemoveTrigger]="{value: null, params: {delay: animationDelay * i}}"
+        >
+          <span class="text-medium mr-8"
+                *ngIf="navigationItem.subMenu"
+                [class.color-primary]="accordion.isOpen && navigationItem.subMenu"
+          >
+            {{navigationItem.name}}
+          </span>
+
+          <a class="button-interaction_outlined text-medium mb-0 d-block"
+             *ngIf="!navigationItem.subMenu"
+             [class.link-disabled]="!(isNavigationEnabled(navigationItem.url!) | async)"
+             [class.link-disabled_not-exist]="!navigationItem.url"
+             [class.cursor-pointer]="navigationItem.url"
+             [href]="[navigationBar.mainRoute, navigationItem.url]"
+             [routerLink]="[navigationBar.mainRoute, navigationItem.url]"
+             [routerLinkActive]="'color-primary'"
+          >
+            {{navigationItem.name}}
+          </a>
+
+          <svg-icon-sprite
+            *ngIf="navigationItem.subMenu"
+            [class.icon_arrow-close]="!accordion.isOpen"
+            [src]="'assets/sprites/sprite.svg#arrow-icon'"
+            [classes]="!accordion.isOpen ? 'icon icon_16 icon_grayscale-dark' : 'icon icon_16 icon_primary-normal'"
+          >
+          </svg-icon-sprite>
+        </button>
+
+        <div class="pl-8 d-block">
+          <a class="button-interaction_outlined text-medium mt-8 mb-0 d-block"
+             *ngFor="let link of navigationItem.subMenu"
+             [class.link-disabled]="!(isNavigationEnabled(link.url!) | async)"
+             [class.cursor-pointer]="link.url"
+             [@myInsertRemoveTrigger]="{value: null, params: {delay: animationDelay * i}}"
+             [href]="[navigationBar.mainRoute, link.url]"
+             [routerLink]="[navigationBar.mainRoute, link.url]"
+             [routerLinkActive]="'color-primary'"
+          >
+            {{link.name}}
+          </a>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</ng-container>

@@ -1,0 +1,15 @@
+export const basePermissionsConfig: string[] = [
+  'user',
+  'invite',
+  'group',
+  'overview',
+  'profile',
+  'security',
+  'additional',
+  'general',
+  'readings',
+  'environmental-readings',
+  'members',
+  'rights',
+  // 'subordinates',
+];

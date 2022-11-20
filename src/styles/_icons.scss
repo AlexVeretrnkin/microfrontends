@@ -1,0 +1,91 @@
+@import "functions";
+@import "variables";
+
+svg-icon-sprite {
+  line-height: 0;
+}
+
+.icon {
+  &_6 {
+    width: rem-calc(6px);
+    height: rem-calc(6px);
+    font-size: rem-calc(6px);
+  }
+
+  &_12 {
+    width: rem-calc(12px);
+    height: rem-calc(12px);
+    font-size: rem-calc(12px);
+  }
+
+  &_16 {
+    width: rem-calc(16px);
+    height: rem-calc(16px);
+    font-size: rem-calc(16px);
+  }
+
+  &_24 {
+    width: rem-calc(24px);
+    height: rem-calc(24px);
+    font-size: rem-calc(24px);
+  }
+
+
+  &_120 {
+    width: rem-calc(120px);
+    height: rem-calc(120px);
+    font-size: rem-calc(120px);
+  }
+
+  &_h-14 {
+    height: rem-calc(14px);
+  }
+
+  &_h-20 {
+    height: rem-calc(20px);
+  }
+
+  &_w-10 {
+    width: rem-calc(10px);
+  }
+
+  &_border {
+    color: $border-color;
+  }
+
+  &_primary-normal {
+    color: $primary-normal;
+  }
+
+  &_primary-lightest {
+    color: $primary-lightest;
+  }
+
+  &_error-primary {
+    color: $error-primary;
+  }
+
+  &_error-neutral {
+    color: $error-neutral;
+  }
+
+  &_grayscale-white {
+    color: $grayscale-white;
+  }
+
+  &_grayscale-neutral {
+    color: $grayscale-neutral;
+  }
+
+  &_grayscale-dark {
+    color: $grayscale-dark;
+  }
+
+  &_grayscale-darkest {
+    color: $grayscale-darkest;
+  }
+
+  &_arrow-close {
+    transform: rotate(-90deg);
+  }
+}

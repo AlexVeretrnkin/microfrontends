@@ -1,0 +1,120 @@
+@import "functions";
+@import "variables";
+
+h1 {
+  font-weight: 500;
+  font-size: rem-calc($heading-1-font-size);
+  line-height: rem-calc($heading-1-line-height);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: rem-calc($heading-2-font-size);
+  line-height: rem-calc($heading-2-line-height);
+}
+
+h3 {
+  font-weight: 600;
+  font-size: rem-calc($heading-3-font-size);
+  line-height: rem-calc($heading-3-line-height);
+}
+
+h4 {
+  font-weight: 500;
+  font-size: rem-calc($heading-4-font-size);
+  line-height: rem-calc($heading-4-line-height);
+}
+
+.text-medium {
+  font-weight: 500;
+  font-size: rem-calc($base-font-size);
+  line-height: rem-calc($base-line-height);
+}
+
+.text-regular {
+  @extend .text-medium;
+
+  font-weight: 400;
+}
+
+.text-light {
+  @extend .text-medium;
+
+  font-weight: 300;
+}
+
+.label-large {
+  font-weight: 400;
+  font-size: rem-calc($base-font-size);
+  line-height: rem-calc($base-line-height);
+}
+
+.label-medium {
+  font-weight: 400;
+  font-size: rem-calc($label-font-size);
+  line-height: rem-calc($label-line-height);
+}
+
+.label-regular {
+  @extend .label-medium;
+
+  font-size: rem-calc($label-regular-font-size);
+}
+
+.label-small {
+  @extend .label-medium;
+
+  font-size: rem-calc($label-small-font-size);
+}
+
+.label-tiny {
+  @extend .label-medium;
+
+  font-size: rem-calc($label-tiny-font-size);
+  line-height: rem-calc($label-tiny-line-height);
+}
+
+.caption {
+  font-weight: 500;
+  font-size: rem-calc($caption-font-size);
+  line-height: rem-calc($caption-line-height);
+}
+
+.button-text {
+  letter-spacing: 0.02em;
+  font-size: rem-calc($base-font-size);
+  line-height: rem-calc($base-line-height);
+}
+
+.p {
+  font-weight: normal;
+  font-size: rem-calc(16px);
+  line-height: rem-calc(24px);
+}
+
+.text {
+  &_line-break-anywhere {
+    line-break: anywhere;
+  }
+
+  &_white-space-nowrap {
+    white-space: nowrap;
+  }
+
+  &_ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &_grayscale-neutral {
+    color: $grayscale-neutral;
+  }
+
+  &_grayscale-dark {
+    color: $grayscale-dark;
+  }
+
+  &_black {
+    color: black;
+  }
+}

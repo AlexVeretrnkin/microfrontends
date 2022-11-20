@@ -1,0 +1,11 @@
+<div class="h-54 w-100 divider-border d-flex align-items-center flex-shrink-0">
+  <div class="col-1">
+    <app-animated-checkbox
+      [checkBoxId]="device.id"
+    ></app-animated-checkbox>
+  </div>
+  <p class="text-regular m-0 col-3">{{device?.name}}</p>
+  <p class="text-regular m-0 col-3">{{device?.manufactureDate | date}}</p>
+  <p class="text-regular m-0 col-2">{{device?.type}}</p>
+  <p class="text-regular m-0 col-3">{{device?.roomId}}</p>
+</div>

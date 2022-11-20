@@ -1,0 +1,46 @@
+@import "functions";
+@import "variables";
+
+:host::ng-deep {
+  app-select-input {
+    div {
+      padding: 0 rem-calc(12px);
+    }
+  }
+}
+
+input {
+  &::placeholder {
+    color: $grayscale-dark;
+  }
+}
+
+.file-cross {
+  order: 1;
+
+  margin-right: rem-calc(12px);
+}
+
+.base-input {
+  label {
+    transition: .15s;
+  }
+
+  &:hover {
+    label {
+      border-color: $primary-light;
+    }
+  }
+
+  &:focus {
+    label {
+      border-color: $primary-normal;
+    }
+  }
+
+  &:focus-within {
+    label {
+      border-color: $primary-normal;
+    }
+  }
+}

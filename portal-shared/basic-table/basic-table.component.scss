@@ -1,0 +1,108 @@
+@import "functions";
+@import "variables";
+
+:host {
+  display: flex;
+
+  flex-direction: column;
+
+  &::ng-deep {
+    .disabled-item {
+      svg-icon-sprite {
+        svg {
+          color: $grayscale-neutral !important;
+        }
+      }
+    }
+  }
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.head {
+  border-width: rem-calc(2px);
+
+  top: 0;
+
+  background: $grayscale-white;
+}
+
+.method-card {
+  border: rem-calc(2px) solid $grayscale-lightest;
+
+  border-radius: rem-calc(8px);
+
+  &__button {
+    width: rem-calc(132px);
+    height: rem-calc(32px);
+  }
+
+  &__action {
+    background: $error-lightest;
+
+    border-radius: rem-calc(8px);
+  }
+}
+
+.table-footer {
+  border-top: rem-calc(2px) solid $grayscale-light;
+
+  &__filter {
+    border: rem-calc(2px) solid $grayscale-light;
+  }
+}
+
+.table {
+  background: $grayscale-white;
+}
+
+.w-64 {
+  width: rem-calc(64px);
+}
+
+.heading {
+  color: $grayscale-dark;
+}
+
+.color-black {
+  color: black;
+}
+
+.bg-lightest {
+  transition: .1s;
+
+  background: $primary-lightest;
+
+  &:hover {
+    background: darken($primary-lightest, 3%);
+  }
+}
+
+.bg-primary-light {
+  background: $primary-light;
+}
+
+.filter-container {
+  margin-bottom: rem-calc(-8px);
+}
+
+.filter {
+  background: $grayscale-light;
+
+  &__circle {
+    background: $grayscale-dark;
+  }
+}
+
+.disabled-item {
+  background: $grayscale-light !important;
+
+  pointer-events: none;
+}

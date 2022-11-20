@@ -1,0 +1,8 @@
+<app-basic-table
+  [data]="(tableData$ | async)!"
+  [tableOptions]="tableOptions"
+  (tableAction)="onTableAction()"
+  (controlAction)="onTableAction()"
+>
+</app-basic-table>
+

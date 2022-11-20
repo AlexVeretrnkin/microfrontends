@@ -1,0 +1,151 @@
+<section class="register flip-card d-flex flex-column justify-content-center"
+         *ngIf="{
+            user: user$ | async,
+            isLinkVerified: isLinkVerified$ | async
+         } as data"
+>
+  <div class="flip-card__inner d-flex flex-column justify-content-center"
+       [class.flip-card__inner_fliped]="!data.isLinkVerified"
+  >
+    <div class="flip-card__front d-flex flex-column justify-content-center">
+      <div class="d-flex register__heading-container">
+        <img class="register__heading-image" src="./img/kpi-logo.svg" alt="logo">
+
+        <div>
+          <h4 class="register__heading m-0">Департамент енергоменеджменту</h4>
+          <p class="register__sub-heading label-medium mb-0">Адміністративна панель</p>
+        </div>
+      </div>
+
+      <div class="register__form w-100 d-flex flex-column">
+        <h1 class="register__form-heading">Реєстрація</h1>
+
+        <form class="m-0 p-0"
+              [formGroup]="registerFormGroup"
+        >
+          <div>
+            <span class="label-medium">{{'register.firstName' | translate}}</span>
+
+            <input class="register__input w-100"
+                   type="text"
+                   disabled
+                   [value]="data.user?.invitee?.firstName!"
+                   [placeholder]="'register.loading' | translate"
+            >
+          </div>
+
+          <div class="mt-16">
+            <span class="label-medium">{{'register.lastName' | translate}}</span>
+
+            <input class="register__input w-100"
+                   type="text"
+                   disabled
+                   [value]="data.user?.invitee?.lastName!"
+                   [placeholder]="'register.loading' | translate"
+            >
+          </div>
+
+          <div class="mt-16">
+            <span class="label-medium">{{'register.email' | translate}}</span>
+
+            <input class="register__input input-interaction w-100"
+                   type="text"
+                   autocomplete="off"
+                   autocapitalize="off"
+                   [placeholder]="'Уведіть'"
+                   [formControlName]="'email'"
+            >
+
+            <div class="register__input-hint mt-4 d-flex w-100"
+                 *ngIf="registerFormGroup!.get('email')!.touched &&
+                        registerFormGroup!.get('email')!.errors as error"
+            >
+              <span class="register__input-hint-text label-small">
+                {{error | formErrors:'register'}}
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-16">
+            <span class="label-medium">{{'register.password' | translate}}</span>
+
+            <input class="register__input input-interaction w-100"
+                   type="password"
+                   autocomplete="new-password"
+                   autocapitalize="off"
+                   [placeholder]="'Уведіть'"
+                   [formControlName]="'password'"
+            >
+
+            <div class="register__input-hint mt-4 d-flex w-100"
+                 *ngIf="registerFormGroup!.get('password')!.touched &&
+                        registerFormGroup!.get('password')!.errors! as error"
+            >
+              <span class="register__input-hint-text label-small">
+                {{error | formErrors:'register'}}
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-16">
+            <span class="label-medium">{{'register.repeatPassword' | translate}}</span>
+
+            <input class="register__input input-interaction w-100"
+                   type="password"
+                   autocomplete="new-password"
+                   autocapitalize="off"
+                   [placeholder]="'Уведіть'"
+                   [formControlName]="'repeatPassword'"
+            >
+
+            <div class="register__input-hint mt-4 d-flex w-100"
+                 *ngIf="registerFormGroup!.get('repeatPassword')!.touched &&
+                        registerFormGroup!.get('repeatPassword')!.errors! as error"
+            >
+              <span class="register__input-hint-text label-small">
+                {{error | formErrors:'register'}}
+              </span>
+            </div>
+          </div>
+        </form>
+
+        <button class="register__button button button-interaction d-flex align-items-center justify-content-center cursor-pointer"
+                [disabled]="registerFormGroup.invalid"
+                (click)="signUp()"
+        >
+          {{'register.action' | translate}}
+        </button>
+
+        <a
+          class="register__button register__button_transparent button-interaction_outlined mt-8
+                 d-flex align-items-center justify-content-center cursor-pointer"
+          [href]="routesEnum.login"
+          [routerLink]="routesEnum.login"
+        >
+          {{'register.login' | translate}}
+        </a>
+      </div>
+    </div>
+
+    <div class="flip-card__back d-flex flex-column justify-content-center text-center">
+      <div class="register__error">
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#alert'"
+          [classes]="'icon icon_120 icon_error-primary'"
+        ></svg-icon-sprite>
+
+        <h1 class="mt-8 mb-0">Ой-йой</h1>
+
+        <h4 class="register__error-subheading mt-64 mb-0 text-center">Здається ви не туди потрапили</h4>
+
+        <a class="register__button button button_no-hover-color-change button-interaction mt-16 mb-0
+             w-100 d-flex align-items-center justify-content-center cursor-pointer"
+           [href]="routesEnum.login"
+           [routerLink]="routesEnum.login"
+        >
+          До авторизації
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

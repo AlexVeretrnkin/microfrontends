@@ -1,0 +1,147 @@
+<div class="session-item text-regular d-flex flex-shrink-0 align-items-center w-100"
+     [class.session-item_active]="input?.isControlChecked"
+     [class.pl-20]="!itemOptions.isCheckboxShown"
+>
+  <div class="w-64 h-100 flex-shrink-0 align-items-center justify-content-center"
+       [class.d-none]="!itemOptions.isCheckboxShown"
+       [class.d-flex]="itemOptions.isCheckboxShown"
+  >
+
+    <app-animated-checkbox
+        #input
+        [checkBoxId]=" getFieldValue('id') || index.toString()"
+    ></app-animated-checkbox>
+  </div>
+
+  <div class="w-64 h-100 d-flex flex-shrink-0 align-items-center justify-content-center"
+       *ngIf="itemOptions.expandable"
+  >
+    <svg-icon-sprite
+      class="cursor-pointer"
+      [class.icon_arrow-close]="!isOpen"
+      [src]="'assets/sprites/sprite.svg#arrow-icon'"
+      [classes]="'icon icon_16 icon_grayscale-neutral'"
+      (click)="open()"
+    >
+    </svg-icon-sprite>
+  </div>
+
+  <div class="table-item pt-8 pb-8 h-100 d-flex flex-shrink-0 align-items-center overflow-hidden"
+       *ngFor="let field of itemOptions?.dataFields!.keys()"
+       (click)="action(field)"
+       [class.w-64]="getFieldType(field) === fieldTypeEnum.photo"
+       [ngStyle]="{
+                'order': getFieldType(field) === fieldTypeEnum.photo ? 1 : 2
+       }"
+  >
+    <svg-icon-sprite
+      *ngIf="itemOptions.fieldsWithIcons?.has(field)"
+      [src]="('assets/sprites/sprite.svg#' + itemOptions.fieldsWithIcons?.get(field))"
+      [classes]="'icon icon_24 icon_grayscale-darkest'"
+    >
+    </svg-icon-sprite>
+
+    <span class="text-regular text_white-space-nowrap text_ellipsis overflow-hidden w-100 max-h-100"
+          *ngIf="getFieldType(field) !== fieldTypeEnum.photo && getFieldType(field) !== fieldTypeEnum.boolean"
+          [class.coordinates]="getFieldType(field) === fieldTypeEnum.coordinates"
+          [class.cursor-pointer]="getFieldType(field) === fieldTypeEnum.coordinates"
+          [textContent]="getFieldType(field) === fieldTypeEnum.date ?
+          (getFieldValue(field) | date: 'dd.MM.yyyy HH:mm:ss') :
+          (getFieldValue(field) | translate)"
+    >
+    </span>
+
+    <span class="text-regular text_white-space-nowrap text_ellipsis overflow-hidden w-100 max-h-100"
+          *ngIf="getFieldType(field) === fieldTypeEnum.boolean">
+      {{getFieldValue(field) ? 'Tak' : 'Ні'}}
+    </span>
+
+    <ng-container
+      *ngIf="getFieldType(field) === fieldTypeEnum.photo"
+    >
+      <img class="h-40 w-40 rounded-circle"
+           *ngIf="getFieldValue(field) as imgSrc"
+           [src]="imgSrc"
+           alt="photo"
+      >
+
+      <div class="background-primary h-40 w-40 rounded-circle d-flex align-items-center justify-content-center"
+           *ngIf="!getFieldValue(field)"
+      >
+        <svg-icon-sprite
+          class="h-20 w-20"
+          [src]="'assets/sprites/sprite.svg#person-icon'"
+          [classes]="'icon icon_20 icon_grayscale-white'"
+        >
+        </svg-icon-sprite>
+      </div>
+    </ng-container>
+
+    <div tabindex="0" class="bg-transparent cursor-pointer jello-horizontal ml-4 mr-1 h-100
+                             d-flex justify-content-center align-items-center"
+         *ngIf="getFieldType(field) === fieldTypeEnum.copy"
+         (click)="copyAction(getFieldValue(field))"
+    >
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#copy-icon'"
+        [classes]="'icon icon_16 icon_grayscale-darkest'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+
+  <div class="ml-auto mr-20 order-last d-flex flex-shrink-0 justify-content-end justify-content-center"
+       *ngIf="itemOptions.itemActionsIcons as icons"
+  >
+    <div class="bg-lightest border-radius_8 cursor-pointer ml-4 h-32 w-32
+           d-flex align-items-center justify-content-center"
+         *ngFor="let icon of icons"
+         [class.disabled-item]="isControlsDisabled"
+         [ngClass]="icon.classes!"
+         (click)="emitControlAction(icon.type)"
+    >
+      <svg-icon-sprite
+        class="cursor-pointer"
+        [src]="('assets/sprites/sprite.svg#' + icon.type)"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+</div>
+
+<div class="p-16 mt-7 mb-8"
+     *ngIf="isOpen && itemOptions.expandable"
+>
+  <div class="wrapper d-inline-flex flex-wrap">
+    <div class="info">
+      <p class="label-medium info__heading">Тип</p>
+      <p class="text-regular info__text">Фізичний ключ</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Назва</p>
+      <p class="text-regular info__text">ОТК-2</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Операційна система</p>
+      <p class="text-regular info__text">Windows 10 15.152</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Браузер</p>
+      <p class="text-regular info__text">Firefox 15.5</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">IP-Адреса</p>
+      <p class="text-regular info__text">88.252.1.255</p>
+    </div>
+
+    <div class="info">
+      <p class="label-medium info__heading">Приблизне розташування</p>
+      <p class="text-regular info__text">Місто Київ. Україна</p>
+    </div>
+  </div>
+</div>

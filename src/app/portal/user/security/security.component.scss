@@ -1,0 +1,31 @@
+@import "functions";
+@import "variables";
+
+.heading {
+  color: $grayscale-dark;
+}
+
+.method-card {
+  border: rem-calc(2px) solid $grayscale-lightest;
+
+  border-radius: rem-calc(8px);
+
+  &__button {
+    width: rem-calc(132px);
+    height: rem-calc(32px);
+  }
+
+  &__action {
+    background: $error-lightest;
+
+    border-radius: rem-calc(8px);
+  }
+}
+
+.color-black {
+  color: black;
+}
+
+.bg-lightest {
+  background: $primary-lightest;
+}

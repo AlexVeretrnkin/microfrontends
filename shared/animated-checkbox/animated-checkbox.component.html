@@ -1,0 +1,26 @@
+<input *ngIf="!formControlName && !checkBoxFormControl" type="checkbox" name="cb" [id]="checkBoxId" class="checkbox-input d-none"
+       [(ngModel)]="isControlChecked"
+>
+
+<input *ngIf="formControlName" type="checkbox" name="cb" [id]="formControlName" class="checkbox-input d-none"
+       [checked]="isControlChecked"
+       [formControlName]="formControlName"
+>
+
+<input *ngIf="checkBoxFormControl" type="checkbox" name="cb" [id]="checkBoxId" class="checkbox-input d-none"
+       [checked]="isControlChecked"
+       [formControl]="checkBoxFormControl"
+>
+
+
+<label [for]="formControlName ? formControlName : checkBoxId"
+       class="checkbox-input-label checkbox-input-label_primary checkbox cursor-pointer d-flex align-items-center justify-content-center m-0">
+  <svg class="checkbox__checkmark checkbox__checkmark_primary d-flex" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="checkbox__checkmark-path checkbox__checkmark-path_primary"
+          d="M11.7803 2.09467C12.0732 2.38756 12.0732 2.86244 11.7803 3.15533L5.03033 9.90533C4.73744 10.1982 4.26256 10.1982 3.96967
+          9.90533L0.21967 6.15533C-0.0732233 5.86244 -0.0732233 5.38756 0.21967 5.09467C0.512563 4.80178 0.987437 4.80178 1.28033 5.09467L4.5
+          8.31434L10.7197 2.09467C11.0126 1.80178 11.4874 1.80178 11.7803 2.09467Z"
+    />
+    <rect class="checkbox__checkmark-rect checkbox__checkmark-rect_primary"/>
+  </svg>
+</label>

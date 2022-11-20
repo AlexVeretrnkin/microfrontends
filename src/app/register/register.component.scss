@@ -1,0 +1,172 @@
+@import "variables";
+@import "functions";
+
+:host {
+  height: 100%;
+  width: 100%;
+
+  background: $grayscale-white;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.register {
+  height: 100%;
+  width: rem-calc(360px);
+
+  &__heading-container {
+    margin-bottom: rem-calc(40px);
+
+    height: rem-calc(72px);
+  }
+
+  &__heading-image {
+    margin-right: rem-calc(8px);
+  }
+
+  &__heading {
+    color: $grayscale-darkest;
+  }
+
+  &__sub-heading {
+    margin-top: rem-calc(8px);
+
+    color: $grayscale-neutral;
+  }
+
+  &__form {
+    padding: rem-calc(32px) rem-calc(32px) rem-calc(36px) rem-calc(32px);
+
+    height: auto;
+
+    background: $grayscale-lightest;
+
+    border-radius: rem-calc(16px);
+  }
+
+  &__form-heading {
+    color: black;
+
+    margin-bottom: rem-calc(32px);
+  }
+
+  &__input {
+    padding: rem-calc(8px) rem-calc(12px);
+
+    border: rem-calc(2px) solid #E6E7FF;
+
+    border-radius: rem-calc(6px);
+
+    height: rem-calc(40px);
+
+    &:disabled {
+      color: $grayscale-neutral;
+
+      border: rem-calc(2px) solid $grayscale-light;
+
+      &::placeholder {
+        color: $grayscale-neutral;
+      }
+    }
+
+    &::placeholder {
+      color: $grayscale-light;
+    }
+  }
+
+  &__input-hint {
+    height: rem-calc(16px);
+  }
+
+  &__input-hint-text {
+    color: $error-primary;
+  }
+
+  &__button {
+    height: rem-calc(48px);
+
+    margin-top: rem-calc(32px);
+
+    border-radius: rem-calc(6px);
+
+    &_transparent {
+      height: rem-calc(24px);
+
+      margin-top: rem-calc(12px);
+
+      background: transparent;
+
+      color: $primary-normal;
+    }
+  }
+
+  &__error {
+    width: rem-calc(300px);
+  }
+
+  &__error-subheading {
+    color: $grayscale-dark;
+  }
+}
+
+.flip-card {
+  perspective: rem-calc(1000px);
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.2s;
+    transform-style: preserve-3d;
+
+    &_fliped {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__back, &__front {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+  }
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}

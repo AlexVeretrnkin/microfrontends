@@ -1,0 +1,15 @@
+@import "functions";
+@import "variables";
+@import "modals";
+
+:host {
+  display: block;
+
+  width: rem-calc(398px);
+
+  @extend .base-modal;
+}
+
+.text-dark {
+  color: $grayscale-dark !important;
+}

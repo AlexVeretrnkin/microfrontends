@@ -1,0 +1,154 @@
+@import "functions";
+@import "variables";
+
+:host {
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    div .border-left {
+      border-color: $primary-light !important;
+    }
+  }
+
+  &:focus {
+    div .border-left {
+      border-color: $primary-normal !important;
+    }
+  }
+
+  &:focus-within {
+    div .border-left {
+      border-color: $primary-normal !important;
+    }
+  }
+}
+
+:host::ng-deep {
+  bs-datepicker-navigation-view {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .selected {
+    background: $primary-light !important;
+
+    border-radius: rem-calc(6px);
+
+    color: $grayscale-white !important;
+  }
+
+  .is-other-month {
+    color: $grayscale-neutral !important;
+  }
+
+  .bs-datepicker-body table.days span {
+    border-radius: rem-calc(6px);
+
+    color: $grayscale-darkest;
+  }
+
+  .bs-datepicker {
+    //filter: drop-shadow(0px rem-calc(4px) rem-calc(8px) rgba(0, 0, 0, 0.16));
+
+    box-shadow: none;
+
+    border-radius: rem-calc(16px);
+  }
+
+  .bs-datepicker-container {
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: rem-calc(16px);
+  }
+
+  .bs-datepicker-head {
+    height: rem-calc(56px);
+
+    padding: rem-calc(16px) rem-calc(16px) rem-calc(11px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: $grayscale-white;
+
+    border-bottom: rem-calc(2px) solid $grayscale-light;
+
+    button {
+      color: $primary-normal;
+
+      /*      &:nth-child(2) {
+              position: absolute;
+              top: rem-calc(16px);
+              left: 50%;
+              transform: translateX(-50%);
+            }
+
+            &:nth-child(3) {
+              position: absolute;
+              bottom: rem-calc(11px);
+              left: 50%;
+              transform: translateX(-50%);
+            }*/
+    }
+  }
+
+  .bs-datepicker-body {
+    border: none;
+
+    padding: rem-calc(8px) rem-calc(16px) rem-calc(16px);
+  }
+
+  timepicker {
+    tr.text-center {
+      display: none;
+    }
+
+    td {
+      color: $grayscale-neutral;
+    }
+
+    td.form-group input {
+      border-radius: rem-calc(8px);
+
+      border: rem-calc(2px) solid $grayscale-light;
+
+      color: $grayscale-dark;
+
+      &:focus {
+        border: rem-calc(2px) solid $grayscale-light !important;
+
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.placeholder {
+  color: $grayscale-dark;
+}
+
+.border-left {
+  border-left: rem-calc(2px) solid $grayscale-light !important;
+}
+
+.date-container {
+  top: rem-calc(40px);
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  width: rem-calc(278px);
+
+  background: $grayscale-white;
+
+  filter: drop-shadow(0px rem-calc(4px) rem-calc(8px) rgba(0, 0, 0, 0.16));
+
+  border-radius: rem-calc(16px);
+}

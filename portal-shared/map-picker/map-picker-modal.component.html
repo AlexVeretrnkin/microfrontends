@@ -1,0 +1,32 @@
+<google-map
+  [height]="'400px'"
+  [width]="'100%'"
+  [center]="defaultCenter"
+  (mapClick)="setMarker($event)"
+>
+  <map-marker
+    [position]="chosenPosition"
+  >
+  </map-marker>
+</google-map>
+
+<div class="pl-16 mt-8 mb-8 d-flex flex-column">
+  <span class="label-regular text_grayscale-dark">Обрано:</span>
+  <span class="label-regular text_grayscale-dark">
+    {{chosenPosition.lng + ' ' +  chosenPosition.lat}}
+  </span>
+</div>
+
+<section class="modal__footer pt-19 pb-16 pr-16 d-flex justify-content-end align-content-center">
+  <button class="button button_transparent h-48 pt-12 pb-12 pl-16 pr-16"
+          (click)="close()"
+  >
+    Скасувати
+  </button>
+
+  <button class="button border-radius_8 h-48 pt-12 pb-12 pl-16 pr-16 ml-10"
+          (click)="action()"
+  >
+    Зберегти
+  </button>
+</section>

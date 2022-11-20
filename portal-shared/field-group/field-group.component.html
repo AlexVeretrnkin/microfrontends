@@ -1,0 +1,12 @@
+<h5 class="text_grayscale-dark mb-0">{{fieldGroup.name}}</h5>
+<div class="pl-16">
+  <app-modal-input
+    class="mt-8 d-block"
+    *ngFor="let input of fieldGroup.inputs"
+    [inputData]="input"
+    [control]="getFormControl(input.formControlName)"
+    (fileChange)="onFileChange($event)"
+    (typeheadSelection)="onTypeheadSelection($event)"
+  >
+  </app-modal-input>
+</div>

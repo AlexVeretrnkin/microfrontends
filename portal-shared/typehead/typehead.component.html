@@ -1,0 +1,37 @@
+<div class="d-flex flex-column position-relative">
+  <div class="d-flex align-items-center w-100 h-100">
+    <input [formControl]="control"
+           [placeholder]="('placeholders.' + searchField) | translate"
+           [typeahead]="dataSource$"
+           [typeaheadAsync]="true"
+           [optionsListTemplate]="customListTemplate"
+           [typeaheadOptionField]="getString(searchField)"
+           [typeaheadMinLength]="0"
+           (typeaheadOnBlur)="selectValue($event)"
+           (typeaheadOnSelect)="selectValue($event)"
+           (focusin)="toggleIcon(true)"
+           (focusout)="toggleIcon(false)"
+           class="typehead-input border-0 m-0"
+    >
+
+    <svg-icon-sprite
+      class="ml-auto mr-12"
+      [class.rotate-90deg-reverse]="!isIconRotated"
+      [src]="'assets/sprites/sprite.svg#arrow-icon'"
+      [classes]="'icon icon_16 icon_grayscale-neutral'"
+    >
+    </svg-icon-sprite>
+  </div>
+
+  <ng-template #customListTemplate let-matches="matches" let-query="query" let-typeaheadTemplateMethods>
+    <ul class="border-radius_8 border-0 p-0 m-0 w-100 d-flex flex-column">
+      <li class="custom-list-group-item cursor-pointer"
+          *ngFor="let match of matches"
+          [class.active]="typeaheadTemplateMethods.isActive(match)"
+          (click)="typeaheadTemplateMethods.selectMatch(match, $event)"
+          (mouseenter)="typeaheadTemplateMethods.selectActive(match)">
+        {{ match.item[searchField] }}
+      </li>
+    </ul>
+  </ng-template>
+</div>

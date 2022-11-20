@@ -1,0 +1,133 @@
+<section class="border border-radius_16 scrollable-container p-16 w-100"
+         *ngIf="meter$ | async as meter"
+>
+  <div class="d-flex justify-content-between align-items-center">
+    <h4 class="text_grayscale-dark mb-0">Загальні дані</h4>
+
+    <div class="bg-info-lightest border-radius_8 cursor-pointer button-interaction_outlined
+                w-32 h-32 d-flex align-items-center justify-content-center"
+         (click)="openInputModal(meter)"
+    >
+      <svg-icon-sprite
+        [src]="'assets/sprites/sprite.svg#edit-icon'"
+        [classes]="'icon icon_16 icon_primary-normal'"
+      >
+      </svg-icon-sprite>
+    </div>
+  </div>
+
+  <div class="general-info-wrapper pt-16 d-flex flex-wrap">
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Тип лічильнику</p>
+      <p class="text-regular text_grayscale-dark">{{meter.type}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Модель</p>
+      <p class="text-regular text_grayscale-dark">{{meter.modelNumber}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Серійний номер</p>
+      <p class="text-regular text_grayscale-dark">{{meter.serialNumber}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Рік випуску</p>
+      <p class="text-regular text_grayscale-dark">{{meter.manufactureYear}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Місце встановлення</p>
+      <p class="text-regular text_grayscale-dark"
+         *ngIf="building$ | async as building"
+      >
+        {{building.name}}
+      </p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Дата встановлення</p>
+      <p class="text-regular text_grayscale-dark">{{meter.installationDate | date:'dd.MM.yyyy HH:mm:ss' }}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Примітка щодо встановлення</p>
+      <p class="text-regular text_grayscale-dark">{{meter.installationNotes}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Обліковий номер</p>
+      <p class="text-regular text_grayscale-dark">{{meter.accountingNumber}}</p>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Пов’язаний номер</p>
+      <p class="text-regular text_grayscale-dark">{{meter.relatedContractNumber}}</p>
+    </div>
+
+    <div class="d-flex flex-column w-100 mt-32">
+      <h6 class="mb-8 text_grayscale-neutral">Відповідальні особи</h6>
+
+      <div class="w-100 d-flex flex-wrap">
+        <div class="general-info-item h-100 mt-0">
+          <p class="label-medium text_grayscale-neutral">Відповідальний за експлуатацію</p>
+          <div class="h-40 d-flex align-items-center"
+               *ngIf="responsibleUser$ | async as user"
+          >
+
+            <div class="background-primary rounded-circle w-40 h-40 mr-8 d-flex align-items-center justify-content-center"
+                 *ngIf="!user.photoUrl"
+            >
+              <svg-icon-sprite
+                [src]="'assets/sprites/sprite.svg#person-icon'"
+                [classes]="'icon icon_24 icon_grayscale-white'"
+              >
+              </svg-icon-sprite>
+            </div>
+
+            <img class="w-40 h-40 mr-8 rounded-circle"
+                 *ngIf="user.photoUrl"
+                 [src]="user.photoUrl"
+                 alt=""
+            >
+
+            <span class="text-regular text_grayscale-dark mr-8">{{user.firstName}} {{user.lastName}}</span>
+
+            <div class="bg-info-lightest border-radius_8 cursor-pointer button-interaction_outlined
+                w-32 h-32 d-flex align-items-center justify-content-center">
+              <svg-icon-sprite
+                [src]="'assets/sprites/sprite.svg#eye-icon'"
+                [classes]="'icon icon_16 icon_primary-normal'"
+              >
+              </svg-icon-sprite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column w-100 mt-32">
+      <h6 class="mb-8 text_grayscale-neutral">Повірка</h6>
+
+      <div class="w-100 d-flex flex-wrap">
+        <div class="general-info-item mt-0">
+          <p class="label-medium text_grayscale-neutral">Дата останньої повірки</p>
+          <p class="text-regular text_grayscale-dark">{{meter.lastVerificationDate}}</p>
+        </div>
+
+        <div class="general-info-item mt-0">
+          <p class="label-medium text_grayscale-neutral">Інтервал повірки</p>
+          <p class="text-regular text_grayscale-dark">{{meter.verificationIntervalSec}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="general-info-item">
+      <p class="label-medium text_grayscale-neutral">Примітки</p>
+      <p class="text-regular text_grayscale-dark">{{meter.otherNotes}}</p>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,19 @@
+@import "functions";
+@import "variables";
+@import "modals";
+
+:host {
+  display: block;
+
+  @extend .base-modal;
+
+  padding: 0;
+
+  margin: rem-calc(16px) 0;
+
+  width: rem-calc(500px);
+}
+
+.field-container {
+  width: rem-calc(262px);
+}

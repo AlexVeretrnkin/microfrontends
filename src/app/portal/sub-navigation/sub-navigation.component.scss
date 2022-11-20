@@ -1,0 +1,74 @@
+@import "functions";
+@import "variables";
+@import "icons";
+
+:host {
+  width: rem-calc(252px);
+  height: 100%;
+
+  padding: rem-calc(16px) rem-calc(16px) 0 rem-calc(32px);
+
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  background: $grayscale-lightest;
+}
+
+:host::ng-deep {
+  accordion-group {
+    .panel-heading, .panel, .panel-body {
+      background: transparent;
+
+      padding: 0;
+
+      border: none;
+
+      .accordion-toggle {
+        background: transparent;
+      }
+    }
+  }
+
+  .accordion__button {
+    &:hover {
+      svg-icon-sprite {
+        svg {
+          color: rgba($primary-normal, .6);
+        }
+      }
+    }
+  }
+}
+
+.link-disabled {
+  opacity: .6;
+
+  pointer-events: none;
+
+  &_not-exist {
+    opacity: .4;
+  }
+}
+
+.button-interaction_outlined {
+  &:hover {
+    color: rgba($primary-normal, .6);
+  }
+
+  &:focus {
+    color: inherit;
+  }
+}
+
+.sub-heading {
+  height: rem-calc(24px);
+}
+
+.accordion {
+  &__button {
+    min-height: rem-calc(24px);
+
+    background: transparent;
+  }
+}

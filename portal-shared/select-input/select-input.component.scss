@@ -1,0 +1,8 @@
+@import "functions";
+@import "variables";
+
+.item {
+  &:hover {
+    background: $primary-lightest;
+  }
+}

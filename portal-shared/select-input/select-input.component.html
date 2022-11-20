@@ -1,0 +1,52 @@
+<div class="btn-group w-100"
+     dropdown
+     #dropdown="bs-dropdown"
+     [isDisabled]="selectControl.disabled"
+>
+  <button id="button-basic"
+          class="text_grayscale-dark text-left bg-transparent h-40 w-100 pl-0 pr-0 d-flex align-items-center cursor-pointer"
+          dropdownToggle
+          aria-controls="dropdown-basic"
+  >
+    <svg-icon-sprite
+      class="mr-8"
+      *ngIf="isIconShown"
+      [src]="('assets/sprites/sprite.svg#' + selectControl?.value + '-icon')"
+      [classes]="'icon icon_16 icon_grayscale-darkest'"
+    >
+    </svg-icon-sprite>
+
+    <span>{{selectControl?.value ? selectControl?.value : defaultText}}</span>
+
+    <svg-icon-sprite
+      class="ml-auto"
+      *ngIf="selectControl.enabled"
+      [class.rotate-90deg-reverse]="!dropdown.isOpen"
+      [src]="'assets/sprites/sprite.svg#arrow-icon'"
+      [classes]="'icon icon_16 icon_grayscale-neutral'"
+    >
+    </svg-icon-sprite>
+  </button>
+
+  <ul id="dropdown-basic"
+      class="dropdown-menu border-radius_8 border-0 p-0 overflow-hidden w-100"
+      role="menu"
+      aria-labelledby="button-basic"
+      *dropdownMenu
+  >
+    <li class="item h-48 p-16 cursor-pointer d-flex align-items-center"
+        *ngFor="let type of selections"
+        (click)="choseContactType(type)"
+        role="menuitem"
+    >
+      <svg-icon-sprite
+        class="mr-8"
+        [src]="('assets/sprites/sprite.svg#' + type + '-icon')"
+        [classes]="'icon icon_16 icon_grayscale-darkest'"
+      >
+      </svg-icon-sprite>
+
+      <span class="text-regular">{{type}}</span>
+    </li>
+  </ul>
+</div>

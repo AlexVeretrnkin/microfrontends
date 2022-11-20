@@ -1,0 +1,13 @@
+:host::ng-deep {
+  .table-item {
+    order: 2 !important;
+  }
+
+  .table-item:nth-of-type(6) {
+    order: 1 !important;
+  }
+
+  .table-item:nth-of-type(2) {
+    order: 0 !important;
+  }
+}

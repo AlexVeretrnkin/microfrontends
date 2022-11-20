@@ -1,0 +1,54 @@
+@import "functions";
+@import "variables";
+
+@for $i from 4px through 72px {
+  .h-#{$i} {
+       height: rem-calc($i);
+     }
+
+  .w-#{$i} {
+    width: rem-calc($i);
+  }
+
+  .min-h-#{$i} {
+    min-height: rem-calc($i);
+  }
+
+  .min-w-#{$i} {
+    min-width: rem-calc($i);
+  }
+
+  .max-h-#{$i} {
+    max-height: rem-calc($i);
+  }
+
+  .max-w-#{$i} {
+    max-width: rem-calc($i);
+  }
+}
+
+.table-item {
+  width: rem-calc(210px);
+}
+
+.max-h-100 {
+  max-height: 100%;
+}
+
+.border {
+  border: rem-calc(2px) solid $grayscale-light;
+}
+
+.border-radius {
+  &_8 {
+    border-radius: rem-calc(8px);
+  }
+
+  &_16 {
+    border-radius: rem-calc(16px);
+  }
+
+  &_top-edge-8 {
+    border-radius: rem-calc(8px) rem-calc(8px) 0 0;
+  }
+}

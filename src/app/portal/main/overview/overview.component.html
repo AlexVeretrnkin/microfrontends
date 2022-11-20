@@ -1,0 +1,129 @@
+<h3 class="mb-48">
+  Огляд
+</h3>
+
+<!--<section class="mb-32">
+  <h4 class="text_grayscale-dark mb-16">Повідомлення</h4>
+
+  <div class="d-flex align-items-center">
+    <div class="notification notification_warning p-16 border-radius_16 mr-16">
+      <p class="text-medium m-0 p-0">
+        Необхідно оновити дані
+      </p>
+      <p class="text-light m-0 p-0">
+        Для корпусу 7 не оновлено дані про початок та кінець опалювального періоду.
+      </p>
+    </div>
+
+    <div class="notification notification_error p-16 border-radius_16">
+      <p class="text-medium m-0 p-0">
+        Значно пропущено строк оновлення даних
+      </p>
+      <p class="text-light m-0 p-0">
+        Для корпусу 5 не оновлено дані про початок та кінець опалювального періоду.
+      </p>
+    </div>
+  </div>
+</section>-->
+
+<section class="mb-32 border-radius_16 border">
+  <div class="h-64 pr-16 pl-16 d-flex align-items-center">
+    <h4 class="text_grayscale-dark m-0">Корпуси</h4>
+
+    <div class="ml-auto d-flex align-items-center">
+      <div class="bg-lightest border-radius_8 cursor-pointer ml-4 h-32 w-32
+           d-flex align-items-center justify-content-center"
+      >
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#export-icon'"
+          [classes]="'icon icon_16 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+
+      <div class="bg-lightest border-radius_8 cursor-pointer ml-16 h-32 w-32
+               d-flex align-items-center justify-content-center"
+      >
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#refresh'"
+          [classes]="'icon icon_16 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+
+      <div class="bg-lightest border-radius_8 cursor-pointer ml-4 h-32 w-32
+           d-flex align-items-center justify-content-center"
+      >
+        <svg-icon-sprite
+          [src]="isTableModalShown ? 'assets/sprites/sprite.svg#shrink-icon' : 'assets/sprites/sprite.svg#expand-icon'"
+          [classes]="'icon icon_16 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-border pr-16 pl-16 h-72 d-flex align-items-center">
+    <div class="col-3 p-0 m-0">Тип</div>
+    <div class="col-3 p-0 m-0">Кількість</div>
+    <div class="col-6 p-0 m-0">Загальна опалювальна площа (м2)</div>
+  </div>
+
+  <div class="divider-border pr-16 pl-16 h-48 d-flex align-items-center"
+       *ngFor="let building of buildings$ | async">
+    <div class="col-3 p-0 m-0">{{building.name}}</div>
+    <div class="col-3 p-0 m-0">{{building.buildingsCount}}</div>
+    <div class="col-6 p-0 m-0">0</div>
+  </div>
+</section>
+
+<section class="border-radius_16 border">
+  <div class="h-64 pr-16 pl-16 d-flex align-items-center">
+    <h4 class="text_grayscale-dark m-0">Кількість осіб</h4>
+
+    <div class="ml-auto d-flex align-items-center">
+      <div class="bg-lightest border-radius_8 cursor-pointer ml-4 h-32 w-32
+           d-flex align-items-center justify-content-center"
+      >
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#export-icon'"
+          [classes]="'icon icon_16 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+
+      <div class="bg-lightest border-radius_8 cursor-pointer ml-16 h-32 w-32
+               d-flex align-items-center justify-content-center"
+      >
+        <svg-icon-sprite
+          [src]="'assets/sprites/sprite.svg#refresh'"
+          [classes]="'icon icon_16 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+
+      <div class="bg-lightest border-radius_8 cursor-pointer ml-4 h-32 w-32
+           d-flex align-items-center justify-content-center"
+      >
+        <svg-icon-sprite
+          [src]="isTableModalShown ? 'assets/sprites/sprite.svg#shrink-icon' : 'assets/sprites/sprite.svg#expand-icon'"
+          [classes]="'icon icon_16 icon_primary-normal'"
+        >
+        </svg-icon-sprite>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-border pr-16 pl-16 h-72 d-flex align-items-center">
+    <div class="col-3 p-0 m-0">Тип</div>
+    <div class="col-3 p-0 m-0">Кількість</div>
+    <div class="col-6 p-0 m-0"></div>
+  </div>
+
+  <div class="divider-border pr-16 pl-16 h-48 d-flex align-items-center"
+       *ngFor="let value of personnel$ | async">
+    <div class="col-3 p-0 m-0">{{value.key}}</div>
+    <div class="col-3 p-0 m-0">{{value.value}}</div>
+    <div class="col-6 p-0 m-0"></div>
+  </div>
+</section>
